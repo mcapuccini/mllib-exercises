@@ -1,0 +1,182 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Task 1",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:24:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTask 1\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505736178453_2136740363",
+      "id": "20170918-120258_1602974718",
+      "dateCreated": "Sep 18, 2017 12:02:58 PM",
+      "dateStarted": "Sep 18, 2017 12:24:05 PM",
+      "dateFinished": "Sep 18, 2017 12:24:05 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.apache.spark.mllib.classification.{SVMModel, SVMWithSGD}\nimport org.apache.spark.mllib.evaluation.BinaryClassificationMetrics\nimport org.apache.spark.mllib.util.MLUtils\n\n// Load training data in LIBSVM format.\nval data \u003d MLUtils.loadLibSVMFile(sc, \"/data/toxicology.libsvm\")\n\n// Split data into training (60%) and test (40%).\nval splits \u003d data.randomSplit(Array(0.6, 0.4), seed \u003d 11L)\nval training \u003d splits(0).cache()\nval test \u003d splits(1)\n\n// Run training algorithm to build the model\nval numIterations \u003d 100\nval model \u003d SVMWithSGD.train(training, numIterations)\n\n// Clear the default threshold.\nmodel.clearThreshold()\n\n// Compute raw scores on the test set.\nval scoreAndLabels \u003d test.map { point \u003d\u003e\n  val score \u003d model.predict(point.features)\n  (score, point.label)\n}\n\n// Get evaluation metrics.\nval metrics \u003d new BinaryClassificationMetrics(scoreAndLabels)\nval auROC \u003d metrics.areaUnderROC()\n\nprintln(\"Area under ROC \u003d \" + auROC)",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:34:45 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "tableHide": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nimport org.apache.spark.mllib.classification.{SVMModel, SVMWithSGD}\n\nimport org.apache.spark.mllib.evaluation.BinaryClassificationMetrics\n\nimport org.apache.spark.mllib.util.MLUtils\n\ndata: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[575] at map at MLUtils.scala:84\n\nsplits: Array[org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]] \u003d Array(MapPartitionsRDD[576] at randomSplit at \u003cconsole\u003e:50, MapPartitionsRDD[577] at randomSplit at \u003cconsole\u003e:50)\n\ntraining: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[576] at randomSplit at \u003cconsole\u003e:50\n\ntest: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[577] at randomSplit at \u003cconsole\u003e:50\n\nnumIterations: Int \u003d 100\n\nmodel: org.apache.spark.mllib.classification.SVMModel \u003d org.apache.spark.mllib.classification.SVMModel: intercept \u003d 0.0, numFeatures \u003d 185316, numClasses \u003d 2, threshold \u003d 0.0\n\nres80: model.type \u003d org.apache.spark.mllib.classification.SVMModel: intercept \u003d 0.0, numFeatures \u003d 185316, numClasses \u003d 2, threshold \u003d None\n\nscoreAndLabels: org.apache.spark.rdd.RDD[(Double, Double)] \u003d MapPartitionsRDD[781] at map at \u003cconsole\u003e:60\n\nmetrics: org.apache.spark.mllib.evaluation.BinaryClassificationMetrics \u003d org.apache.spark.mllib.evaluation.BinaryClassificationMetrics@3a93d582\n\nauROC: Double \u003d 0.33815878653770004\nArea under ROC \u003d 0.33815878653770004\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505737445134_1246254620",
+      "id": "20170918-122405_538683970",
+      "dateCreated": "Sep 18, 2017 12:24:05 PM",
+      "dateStarted": "Sep 18, 2017 12:34:11 PM",
+      "dateFinished": "Sep 18, 2017 12:34:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Task 2",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:28:55 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTask 2\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505737617666_-1210169538",
+      "id": "20170918-122657_1300371421",
+      "dateCreated": "Sep 18, 2017 12:26:57 PM",
+      "dateStarted": "Sep 18, 2017 12:28:55 PM",
+      "dateFinished": "Sep 18, 2017 12:28:55 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.apache.spark.mllib.classification.LogisticRegressionModel\nimport org.apache.spark.mllib.evaluation.BinaryClassificationMetrics\nimport org.apache.spark.mllib.linalg.Vectors\nimport org.apache.spark.mllib.optimization.{LBFGS, HingeGradient, SquaredL2Updater}\nimport org.apache.spark.mllib.util.MLUtils\n\nval data \u003d MLUtils.loadLibSVMFile(sc, \"/data/toxicology.libsvm\")\nval numFeatures \u003d data.take(1)(0).features.size\n\n// Split data into training (60%) and test (40%).\nval splits \u003d data.randomSplit(Array(0.6, 0.4), seed \u003d 11L)\n\n// Append 1 into the training data as intercept.\nval training \u003d splits(0).map(x \u003d\u003e (x.label, MLUtils.appendBias(x.features))).cache()\n\nval test \u003d splits(1)\n\n// Run training algorithm to build the model\nval numCorrections \u003d 10\nval convergenceTol \u003d 1e-4\nval maxNumIterations \u003d 20\nval regParam \u003d 0.001\nval initialWeightsWithIntercept \u003d Vectors.dense(new Array[Double](numFeatures + 1))\n\nval (weightsWithIntercept, loss) \u003d LBFGS.runLBFGS(\n  training,\n  new HingeGradient(),\n  new SquaredL2Updater(),\n  numCorrections,\n  convergenceTol,\n  maxNumIterations,\n  regParam,\n  initialWeightsWithIntercept)\n\nval model \u003d new LogisticRegressionModel(\n  Vectors.dense(weightsWithIntercept.toArray.slice(0, weightsWithIntercept.size - 1)),\n  weightsWithIntercept(weightsWithIntercept.size - 1))\n\n// Clear the default threshold.\nmodel.clearThreshold()\n\n// Compute raw scores on the test set.\nval scoreAndLabels \u003d test.map { point \u003d\u003e\n  val score \u003d model.predict(point.features)\n  (score, point.label)\n}\n\n// Get evaluation metrics.\nval metrics \u003d new BinaryClassificationMetrics(scoreAndLabels)\nval auROC \u003d metrics.areaUnderROC()\n\nprintln(\"Loss of each step in training process\")\nloss.foreach(println)\nprintln(\"Area under ROC \u003d \" + auROC)",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:40:30 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {},
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nimport org.apache.spark.mllib.classification.LogisticRegressionModel\n\nimport org.apache.spark.mllib.evaluation.BinaryClassificationMetrics\n\nimport org.apache.spark.mllib.linalg.Vectors\n\nimport org.apache.spark.mllib.optimization.{LBFGS, HingeGradient, SquaredL2Updater}\n\nimport org.apache.spark.mllib.util.MLUtils\n\ndata: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[917] at map at MLUtils.scala:84\n\nnumFeatures: Int \u003d 185316\n\nsplits: Array[org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]] \u003d Array(MapPartitionsRDD[918] at randomSplit at \u003cconsole\u003e:65, MapPartitionsRDD[919] at randomSplit at \u003cconsole\u003e:65)\n\ntraining: org.apache.spark.rdd.RDD[(Double, org.apache.spark.mllib.linalg.Vector)] \u003d MapPartitionsRDD[920] at map at \u003cconsole\u003e:67\n\ntest: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[919] at randomSplit at \u003cconsole\u003e:65\n\nnumCorrections: Int \u003d 10\n\nconvergenceTol: Double \u003d 1.0E-4\n\nmaxNumIterations: Int \u003d 20\n\nregParam: Double \u003d 0.001\ninitialWeightsWithIntercept: org.apache.spark.mllib.linalg.Vector \u003d [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,...weightsWithIntercept: org.apache.spark.mllib.linalg.Vector \u003d [0.0,0.0,-2.030413175155491E-6,-8.121652700621963E-6,-1.0152065875778176E-5,-6.09123952546671E-6,-1.218247905093342E-5,-8.12165270062254E-5,-4.327135139816653E-5,-6.532877774462394E-4,-2.030413175155491E-6,-1.6243305401243926E-5,-6.09123952546671E-6,0.004776329392511525,-2.030413175155491E-6,-1.6243305401243926E-5,-2.030413175155491E-6,-2.030413175155491E-6,-8.121652700621963E-6,-2.030413175155491E-6,-4.060826350310982E-6,-4.060826350310982E-6,-2.030413175155491E-6,0.0,-1.6243305401243926E-5,-2.030413175155491E-6,0.0,-2.030413175155491E-6,0.0,-4.060826350310982E-6,-4.060826350310982E-6,-4.060826350310982E-6,-4.060826350310982E-6,-2.030413175155491E-6,-9.61460238756172E-4,-3.45170239776429E-5,-8.121652700621963E-6,-2.0304131751...\nmodel: org.apache.spark.mllib.classification.LogisticRegressionModel \u003d org.apache.spark.mllib.classification.LogisticRegressionModel: intercept \u003d -0.6789420005654293, numFeatures \u003d 185316, numClasses \u003d 2, threshold \u003d 0.5\n\nres141: model.type \u003d org.apache.spark.mllib.classification.LogisticRegressionModel: intercept \u003d -0.6789420005654293, numFeatures \u003d 185316, numClasses \u003d 2, threshold \u003d None\n\nscoreAndLabels: org.apache.spark.rdd.RDD[(Double, Double)] \u003d MapPartitionsRDD[957] at map at \u003cconsole\u003e:73\n\nmetrics: org.apache.spark.mllib.evaluation.BinaryClassificationMetrics \u003d org.apache.spark.mllib.evaluation.BinaryClassificationMetrics@22c4ccbd\n\nauROC: Double \u003d 0.7660442339108151\nLoss of each step in training process\n1.0\n0.015386367628710361\n0.014669488618063204\n0.011581635280848102\n0.007808368460973137\n0.005584507160499795\n0.0051857156916201115\n0.005034938061060059\n0.004850513500809855\n0.004547928087062329\n0.004295554022857254\n0.004192827841657178\n0.004068916905634809\n0.003962813401936566\n0.003843922883906503\n0.0037725718650753097\n0.0037100788640531245\n0.0036769271129176943\n0.0035489326036206104\n0.003493579448681006\n0.0034607193446461646\nArea under ROC \u003d 0.7660442339108151\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505737535372_-125821255",
+      "id": "20170918-122535_1181733153",
+      "dateCreated": "Sep 18, 2017 12:25:35 PM",
+      "dateStarted": "Sep 18, 2017 12:36:04 PM",
+      "dateFinished": "Sep 18, 2017 12:36:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:31:29 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1505737889459_1505771304",
+      "id": "20170918-123129_1607653826",
+      "dateCreated": "Sep 18, 2017 12:31:29 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Solutions: exercise 1",
+  "id": "2CU76Y4RX",
+  "angularObjects": {
+    "2CTXMQRZ1:shared_process": [],
+    "2CTTT6152:shared_process": [],
+    "2CSXYUXJQ:shared_process": [],
+    "2CUBM7FK3:shared_process": [],
+    "2CSK9KPRV:shared_process": [],
+    "2CVG2QP9P:shared_process": [],
+    "2CVXWZV33:shared_process": [],
+    "2CVU7DGVA:shared_process": [],
+    "2CV1B9AF2:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

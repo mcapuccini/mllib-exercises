@@ -1,0 +1,145 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Task 1\nIn pharmaceutical bioinformatics machine learning can be used to build classifications models for molecular toxicology. In this environment we made available a toxicology set: `/data/toxicology.libsvm` in [LIBSVM](https://www.csie.ntu.edu.tw/~cjlin/libsvm/) format. The file is in text format and it looks something like this:\n\n```no-highlight\n0.0 11234:2.0 11482:1.0 12980:1.0 13434:1.0 13858:1.0 23167:1.0 26439:2.0 30078:1.0 30377:1.0 38851:1.0 39621:1.0 41080:2.0 48528:1.0 54325:1.0 54447:2.0 65490:1.0 65991:1.0 71163:1.0 74579:3.0 81127:2.0 86247:1.0 92687:1.0 103188:1.0 103437:2.0 106964:1.0 114196:2.0 121864:1.0 125845:1.0 126651:1.0 132509:1.0 138301:1.0 143915:1.0 145561:1.0 146537:1.0 151499:2.0 152885:1.0 156424:1.0 160914:1.0 163411:2.0 167790:2.0 176961:7.0 178108:2.0 181972:1.0 182021:1.0\n1.0 3639:2.0 4450:1.0 5494:2.0 9998:1.0 13951:1.0 18213:1.0 18323:1.0 18797:1.0 22797:1.0 23347:1.0 26441:1.0 26526:2.0 30605:2.0 44244:1.0 54325:2.0 56124:2.0 62618:2.0 67306:1.0 67926:1.0 68056:1.0 68646:1.0 73422:2.0 74579:6.0 76833:1.0 81127:2.0 85885:2.0 92647:1.0 93882:1.0 94432:1.0 96374:2.0 97697:2.0 105394:1.0 106301:1.0 106411:1.0 107633:1.0 111281:1.0 111394:1.0 113160:1.0 118188:1.0 119006:1.0 122468:2.0 136300:1.0 136849:1.0 144309:2.0 149235:1.0 149439:1.0 149956:2.0 158381:2.0 163411:1.0 165703:1.0 175370:2.0 176961:13.0 181732:1.0\n0.0 20307:1.0 23415:1.0 24337:1.0 36469:1.0 37715:1.0 41512:1.0 45035:1.0 48936:1.0 53031:1.0 54447:2.0 58285:1.0 66077:1.0 69559:1.0 70494:1.0 79582:1.0 90338:1.0 91787:1.0 97697:1.0 101222:1.0 102151:1.0 102692:1.0 113325:1.0 114349:1.0 116804:1.0 122408:1.0 122549:1.0 126712:1.0 126904:1.0 137469:1.0 138146:1.0 143846:1.0 144149:1.0 145926:1.0 157873:1.0 163411:1.0 175272:1.0 176882:1.0 176942:1.0\n1.0 2916:1.0 3639:1.0 6834:1.0 9861:1.0 10642:1.0 12333:1.0 19635:1.0 24916:2.0 27547:1.0 28559:1.0 31499:1.0 35183:1.0 41127:1.0 41916:1.0 46296:1.0 48528:1.0 54447:1.0 54860:1.0 56319:1.0 64081:1.0 65740:1.0 68516:1.0 74579:1.0 77274:1.0 79639:1.0 83151:2.0 97238:1.0 104627:2.0 106964:1.0 110246:1.0 117150:1.0 122408:1.0 124873:1.0 131661:1.0 132518:1.0 135412:1.0 135571:1.0 153997:1.0 163026:1.0 163411:2.0 164716:1.0 170384:1.0 172966:1.0 176041:1.0 176961:5.0 177733:1.0\n```\n\nEach line represents a sample. The first field on each line labels the sample as toxic (`1.0`) or non-toxic (`0.0`), while the remaining fields constitute a sparse molecular representation named [molecular signature](http://www.ncbi.nlm.nih.gov/pubmed/15032522). Molecular signatures are excelent descriptors, and they can be used as features in machine learning problems.\n\n### Goal\nGiven the available toxicology dataset, build a classification model using Spark MLlib Support Vector Machine. When training the model save some samples to compute the area under the ROC curve. \n\n**Hint.** You can get the job done witn minor adaption from the Scala example in this guide: [Linear Support Vector Machines (SVMs)](http://spark.apache.org/docs/2.2.0/mllib-linear-methods.html#linear-support-vector-machines-svms)\n\n**Question.** Do you get a good classification model?\n",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:24:46 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTask 1\u003c/h2\u003e\n\u003cp\u003eIn pharmaceutical bioinformatics machine learning can be used to build classifications models for molecular toxicology. In this environment we made available a toxicology set: \u003ccode\u003e/data/toxicology.libsvm\u003c/code\u003e in \u003ca href\u003d\"https://www.csie.ntu.edu.tw/~cjlin/libsvm/\"\u003eLIBSVM\u003c/a\u003e format. The file is in text format and it looks something like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"no-highlight\"\u003e0.0 11234:2.0 11482:1.0 12980:1.0 13434:1.0 13858:1.0 23167:1.0 26439:2.0 30078:1.0 30377:1.0 38851:1.0 39621:1.0 41080:2.0 48528:1.0 54325:1.0 54447:2.0 65490:1.0 65991:1.0 71163:1.0 74579:3.0 81127:2.0 86247:1.0 92687:1.0 103188:1.0 103437:2.0 106964:1.0 114196:2.0 121864:1.0 125845:1.0 126651:1.0 132509:1.0 138301:1.0 143915:1.0 145561:1.0 146537:1.0 151499:2.0 152885:1.0 156424:1.0 160914:1.0 163411:2.0 167790:2.0 176961:7.0 178108:2.0 181972:1.0 182021:1.0\n1.0 3639:2.0 4450:1.0 5494:2.0 9998:1.0 13951:1.0 18213:1.0 18323:1.0 18797:1.0 22797:1.0 23347:1.0 26441:1.0 26526:2.0 30605:2.0 44244:1.0 54325:2.0 56124:2.0 62618:2.0 67306:1.0 67926:1.0 68056:1.0 68646:1.0 73422:2.0 74579:6.0 76833:1.0 81127:2.0 85885:2.0 92647:1.0 93882:1.0 94432:1.0 96374:2.0 97697:2.0 105394:1.0 106301:1.0 106411:1.0 107633:1.0 111281:1.0 111394:1.0 113160:1.0 118188:1.0 119006:1.0 122468:2.0 136300:1.0 136849:1.0 144309:2.0 149235:1.0 149439:1.0 149956:2.0 158381:2.0 163411:1.0 165703:1.0 175370:2.0 176961:13.0 181732:1.0\n0.0 20307:1.0 23415:1.0 24337:1.0 36469:1.0 37715:1.0 41512:1.0 45035:1.0 48936:1.0 53031:1.0 54447:2.0 58285:1.0 66077:1.0 69559:1.0 70494:1.0 79582:1.0 90338:1.0 91787:1.0 97697:1.0 101222:1.0 102151:1.0 102692:1.0 113325:1.0 114349:1.0 116804:1.0 122408:1.0 122549:1.0 126712:1.0 126904:1.0 137469:1.0 138146:1.0 143846:1.0 144149:1.0 145926:1.0 157873:1.0 163411:1.0 175272:1.0 176882:1.0 176942:1.0\n1.0 2916:1.0 3639:1.0 6834:1.0 9861:1.0 10642:1.0 12333:1.0 19635:1.0 24916:2.0 27547:1.0 28559:1.0 31499:1.0 35183:1.0 41127:1.0 41916:1.0 46296:1.0 48528:1.0 54447:1.0 54860:1.0 56319:1.0 64081:1.0 65740:1.0 68516:1.0 74579:1.0 77274:1.0 79639:1.0 83151:2.0 97238:1.0 104627:2.0 106964:1.0 110246:1.0 117150:1.0 122408:1.0 124873:1.0 131661:1.0 132518:1.0 135412:1.0 135571:1.0 153997:1.0 163026:1.0 163411:2.0 164716:1.0 170384:1.0 172966:1.0 176041:1.0 176961:5.0 177733:1.0\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eEach line represents a sample. The first field on each line labels the sample as toxic (\u003ccode\u003e1.0\u003c/code\u003e) or non-toxic (\u003ccode\u003e0.0\u003c/code\u003e), while the remaining fields constitute a sparse molecular representation named \u003ca href\u003d\"http://www.ncbi.nlm.nih.gov/pubmed/15032522\"\u003emolecular signature\u003c/a\u003e. Molecular signatures are excelent descriptors, and they can be used as features in machine learning problems.\u003c/p\u003e\n\u003ch3\u003eGoal\u003c/h3\u003e\n\u003cp\u003eGiven the available toxicology dataset, build a classification model using Spark MLlib Support Vector Machine. When training the model save some samples to compute the area under the ROC curve. \u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eHint.\u003c/strong\u003e You can get the job done witn minor adaption from the Scala example in this guide: \u003ca href\u003d\"http://spark.apache.org/docs/2.2.0/mllib-linear-methods.html#linear-support-vector-machines-svms\"\u003eLinear Support Vector Machines (SVMs)\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eQuestion.\u003c/strong\u003e Do you get a good classification model?\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505726076789_-1278922381",
+      "id": "20170918-091436_931633912",
+      "dateCreated": "Sep 18, 2017 9:14:36 AM",
+      "dateStarted": "Sep 18, 2017 12:24:46 PM",
+      "dateFinished": "Sep 18, 2017 12:24:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n// Scala code goes here",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 11:43:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1505728050786_1304717913",
+      "id": "20170918-094730_2091296401",
+      "dateCreated": "Sep 18, 2017 9:47:30 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Task 2\nThe dataset `toxicology.libsvm` is imbalanced meaning that most of the samples in it are labeled as non-toxic. Spark uses the [SGD](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) optimization method as default when computing the optimal SVM hyperplane. Since SGD takes in account a random sample of the dataset on each step, it can easily exclude the minority class from highly imbalanced datasets (such as `toxicology.libsvm`). Luckily, Spark provides another optimization algorithm called [L-BFGS](https://en.wikipedia.org/wiki/Limited-memory_BFGS), whih works better in this case.\n\n**Hint 1.** You can get the job done witn minor adaption from the Scala example in this guide: [L-BFGS](https://spark.apache.org/docs/latest/mllib-optimization.html#l-bfgs). However, remember that SVM uses the [HingeGradient](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.mllib.optimization.HingeGradient).\n\n**Hint 2.** The regularization parameter controls how much training error is allowed, with the aim of avaiding overfitting. Try to tune the regularization parameter, decreasing or increasing it, and see how this affects the area under the ROC curve.",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 12:40:03 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTask 2\u003c/h2\u003e\n\u003cp\u003eThe dataset \u003ccode\u003etoxicology.libsvm\u003c/code\u003e is imbalanced meaning that most of the samples in it are labeled as non-toxic. Spark uses the \u003ca href\u003d\"https://en.wikipedia.org/wiki/Stochastic_gradient_descent\"\u003eSGD\u003c/a\u003e optimization method as default when computing the optimal SVM hyperplane. Since SGD takes in account a random sample of the dataset on each step, it can easily exclude the minority class from highly imbalanced datasets (such as \u003ccode\u003etoxicology.libsvm\u003c/code\u003e). Luckily, Spark provides another optimization algorithm called \u003ca href\u003d\"https://en.wikipedia.org/wiki/Limited-memory_BFGS\"\u003eL-BFGS\u003c/a\u003e, whih works better in this case.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eHint 1.\u003c/strong\u003e You can get the job done witn minor adaption from the Scala example in this guide: \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-optimization.html#l-bfgs\"\u003eL-BFGS\u003c/a\u003e. However, remember that SVM uses the \u003ca href\u003d\"https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.mllib.optimization.HingeGradient\"\u003eHingeGradient\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eHint 2.\u003c/strong\u003e The regularization parameter controls how much training error is allowed, with the aim of avaiding overfitting. Try to tune the regularization parameter, decreasing or increasing it, and see how this affects the area under the ROC curve.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505735126091_522235455",
+      "id": "20170918-114526_1185362241",
+      "dateCreated": "Sep 18, 2017 11:45:26 AM",
+      "dateStarted": "Sep 18, 2017 12:40:03 PM",
+      "dateFinished": "Sep 18, 2017 12:40:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n// Scala code goes here",
+      "user": "anonymous",
+      "dateUpdated": "Sep 18, 2017 11:55:07 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1505735157026_-983809657",
+      "id": "20170918-114557_2090594678",
+      "dateCreated": "Sep 18, 2017 11:45:57 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Exercise 1: SVM with Apache Spark",
+  "id": "2CT9SKGBK",
+  "angularObjects": {
+    "2CTXMQRZ1:shared_process": [],
+    "2CTTT6152:shared_process": [],
+    "2CSXYUXJQ:shared_process": [],
+    "2CUBM7FK3:shared_process": [],
+    "2CSK9KPRV:shared_process": [],
+    "2CVG2QP9P:shared_process": [],
+    "2CVXWZV33:shared_process": [],
+    "2CVU7DGVA:shared_process": [],
+    "2CV1B9AF2:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
